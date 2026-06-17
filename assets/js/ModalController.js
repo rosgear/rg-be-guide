@@ -1,0 +1,1 @@
+Ext.define('Rg.be.guide.ModalController',{extend:'Ge.view.form.PanelController',alias:'controller.rg-be-guide-modal',clickHome:function(btn,e,eOpts){Ext.getDom('rg-guide__iframe').src=btn.handlerArgs.url;}});
