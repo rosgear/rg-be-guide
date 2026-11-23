@@ -31,7 +31,9 @@ return [
             ]
         ]
     ],
-    'locales'     => ['ru_RU', 'en_GB'],
+    'locales'     => [
+        'ru_RU', 'en_GB', 'be_BY', 'de_DE', 'es_ES', 'fr_FR', 'it_IT', 'hi_IN', 'kk_KZ', 'pl_PL', 'tr_TR', 'zh_CN'
+    ],
     'permissions' => ['any', 'view', 'read', 'settings', 'info'],
     'events'      => [],
     'required'    => [
