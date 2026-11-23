@@ -11,6 +11,7 @@ namespace Rg\Backend\Guide\Controller;
 
 use Ge;
 use Ge\View\View;
+use Ge\Helper\Url;
 use Ge\Helper\Html;
 use Ge\View\ClientScript;
 use Ge\Panel\Http\Response;
@@ -126,11 +127,11 @@ class Modal extends BaseController
                                 $content = $view->renderFile($filename, [
                                     'assetsUrl' => Ge::$app->moduleUrl . $component['path'] . '/assets',
                                     'themeUrl'  => Ge::$app->theme->url,
-                                    'url'       => function (string $subject, string $component = null) use ($componentSignId): string {
+                                    'url'       => function (string $subject, ?string $component = null) use ($componentSignId): string {
                                         if ($component === null) {
                                             $component = $componentSignId;
                                         }
-                                        return '/' . Ge::alias('@match', "/modal/data?component=$component&subject=$subject");
+                                        return Url::toBackend('/guide/modal/data?component=' . $component . '&subject=' . $subject);
                                     }
                                 ]);
                             } else {
@@ -218,7 +219,7 @@ class Modal extends BaseController
                     'margin'  => '2px',
                     'handler' => 'clickHome',
                     'handlerArgs' => [
-                        'url' => '/' . Ge::alias('@backend', '/guide/modal/data?component=' . $component . '&subject=index')
+                        'url' => Url::toBackend('/guide/modal/data?component=' . $component . '&subject=index')
                     ]
                 ]
             ]
@@ -227,7 +228,7 @@ class Modal extends BaseController
             'id'          => 'rg-guide__iframe',
             'class'       => 'g-frame_fit',
             'frameborder' => '0',
-            'src'         => '/' . Ge::alias('@match', "/modal/data?component=$component&subject=$subject")
+            'src'         => Url::toBackend('/guide/modal/data?component=' . $component . '&subject=' . $subject)
         ]);
         $response
             ->setContent($widget->run())
